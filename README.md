@@ -1,42 +1,40 @@
-# Исследовательский анализ рынка недвижимости Санкт-Петербурга
+# Exploratory Data Analysis of St. Petersburg Real Estate Market
 
-## Описание проекта
-Исследовательский анализ данных сервиса Яндекс Недвижимость — архив объявлений
-о продаже квартир в Санкт-Петербурге и Ленинградской области (~23 700 объявлений).
+## Project Description
+Exploratory data analysis of Yandex Real Estate listings — an archive of apartment sale listings in St. Petersburg and Leningrad Oblast (~23,700 listings).
 
-Цель — выявить ключевые факторы, влияющие на стоимость объектов, и определить
-параметры для построения системы автоматического детектирования аномальных объявлений.
+Goal — identify key factors affecting property prices and determine parameters for building an automated anomaly detection system for listings.
 
-## Данные
-- **Источник:** Яндекс Недвижимость
-- **Охват:** Санкт-Петербург и Ленинградская область, несколько лет
-- **Размер:** ~23 700 объявлений, 22 признака
-- **Тип данных:** пользовательский ввод + автоматические геоданные
+## Data
+- **Source:** Yandex Real Estate
+- **Coverage:** St. Petersburg and Leningrad Oblast, multiple years
+- **Size:** ~23,700 listings, 22 features
+- **Data types:** user input + automated geodata
 
-## Ход работы
-- Первичный анализ данных: пропуски, типы, аномалии
-- Предобработка: заполнение пропусков, приведение типов, устранение дубликатов
-- Feature engineering: цена за м², тип этажа, временны́е признаки
-- Анализ распределений и выявление выбросов с обоснованием порогов
-- Корреляционный анализ (коэффициент Пирсона)
-- Анализ влияния 7 факторов на цену: площадь, этаж, число комнат, дата публикации, локация
-- Сравнение цены м² в 10 крупнейших населённых пунктах выборки
-- Анализ зависимости цены от удалённости от центра Петербурга
+## Workflow
+- Initial data analysis: missing values, types, anomalies
+- Preprocessing: filling missing values, type conversion, duplicate removal
+- Feature engineering: price per m², floor type, time-based features
+- Distribution analysis and outlier detection with threshold justification
+- Correlation analysis (Pearson coefficient)
+- Analysis of 7 factors affecting price: area, floor, number of rooms, listing date, location
+- Price per m² comparison across 10 largest localities in the dataset
+- Price dependency on distance from St. Petersburg city center
 
-## Ключевые выводы
-- **Площадь** — главный предиктор цены: total_area (r=0.67), living_area (r=0.59), kitchen_area (r=0.50)
-- **Этаж:** первый этаж системно дешевле среднего, последний — промежуточная позиция
-- **Локация:** цена м² в СПб — наивысшая в выборке; чёткая отрицательная зависимость от расстояния до центра
-- **Скорость продажи:** медианный срок экспозиции — 95 дней; объявления значительно дольше медианы — кандидаты на проверку
-- **Приоритетные признаки для модели:** `total_area`, `living_area`, `rooms`, `cityCenters_nearest`, `floor_type`
+## Key Findings
+- **Area** — the strongest price predictor: total_area (r=0.67), living_area (r=0.59), kitchen_area (r=0.50)
+- **Floor:** ground floor is consistently cheaper than average, top floor — mid-range
+- **Location:** price per m² in St. Petersburg is the highest in the dataset; clear negative correlation with distance from city center
+- **Time to sell:** median listing duration — 95 days; listings significantly exceeding the median are candidates for review
+- **Priority features for modeling:** `total_area`, `living_area`, `rooms`, `cityCenters_nearest`, `floor_type`
 
-## Стек
+## Tech Stack
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Pandas](https://img.shields.io/badge/Pandas-grey)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-grey)
 
-## Структура репозитория
+## Repository Structure
 ```
-├── spb_real_estate_eda.ipynb   # основной ноутбук
+├── spb_real_estate_eda.ipynb   # main notebook
 └── README.md
 ```
